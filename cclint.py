@@ -75,6 +75,8 @@ def parse_bytecode(listing):
     chunk = None
 
     for line in listing.split("\n"):
+        line = line.rstrip("\r")
+
         if line.startswith("main <"):
             chunk = "main"
             continue
@@ -186,7 +188,8 @@ def check(source):
 
     if errors:
         for error in errors.split("\n"):
-            match = re.match(r"^.+?:.+?:(?P<line>\d+): (?P<message>.+)", error)
+            match = re.match(r"^.+?:.+?:(?P<line>\d+): (?P<message>.+)$",
+                             error.rstrip("\r"))
 
             if match:
                 add_message("E", match.group("line"), match.group("message"))
