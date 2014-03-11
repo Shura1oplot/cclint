@@ -218,12 +218,11 @@ def check(source):
             if name in ignore_global_get:
                 continue
 
-            if cache_globals:
-                if chunk == "main":
+            if name in declared_globals:
+                if chunk != "main":
                     continue
 
-            else:
-                if name in declared_globals:
+                if cache_globals:
                     continue
 
         elif action == "set":
