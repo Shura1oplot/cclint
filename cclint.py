@@ -226,6 +226,9 @@ def check(source):
                     continue
 
         elif action == "set":
+            if name == "_":
+                continue
+
             if name in ignore_global_set:
                 continue
 
