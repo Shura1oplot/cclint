@@ -26,11 +26,6 @@ cc_builtins = (
 )
 
 
-cc_apis_export = (
-    "__bapil__",
-)
-
-
 LUAC = None
 
 
@@ -202,7 +197,7 @@ def check(source):
 
     declared_globals = []
 
-    for lst in (lua51_builtins, cc_builtins, cc_apis_export, apis):
+    for lst in (lua51_builtins, cc_builtins, apis):
         declared_globals.extend(lst)
 
     ignore_global_get, ignore_global_set, set_globals_in_main, cache_globals \
