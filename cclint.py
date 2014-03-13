@@ -219,10 +219,10 @@ def check(source):
                 continue
 
             if name in declared_globals:
-                if chunk != "main":
+                if not cache_globals:
                     continue
 
-                if cache_globals:
+                if chunk == "main":
                     continue
 
         elif action == "set":
